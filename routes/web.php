@@ -21,23 +21,6 @@ Route::get('/about', function () {
 	return view('about');
 });
 
-// CLOSURE
-Route::get('/profil', function () {
-	return "Profil Siswa";
-})->name('profil');
+Route::get('/data', 'StudentController@create');
 
-// ROUTE NAME
-Route::get('/testname', function () {
-	return route('profil');
-});
-
-// PARAMETER
-Route::get('/profil/{id}', function ($id) {
-	return $id;
-});
-
-// CONTROLLER
-Route::get('/controller', 'PagesController@show');
-
-// RESOURCE
-Route::resource('students', 'StudentController');
+Route::post('/data', 'StudentController@store');

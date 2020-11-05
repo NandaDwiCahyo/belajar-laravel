@@ -21,6 +21,9 @@
 					<li class="nav-item @yield('about-nav')">
 						<a class="nav-link" href="{{url('/about')}}">About</a>
 					</li>
+					<li class="nav-item @yield('data-nav')">
+						<a class="nav-link" href="{{url('/data')}}">Data</a>
+					</li>
 				</ul>
 			</div>
 		</nav>

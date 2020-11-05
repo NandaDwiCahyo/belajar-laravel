@@ -11,6 +11,7 @@
 	<hr class="my-4">
 	<p>Kembali ke halaman home</p>
 	<a class="btn btn-primary btn-lg" href="{{url('/')}}" role="button">Home</a>
+	<a class="btn btn-primary btn-lg" href="{{url('/data')}}" role="button">Data</a>
 </div>
 
 @endsection

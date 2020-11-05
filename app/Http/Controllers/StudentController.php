@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Student;
+
 
 class StudentController extends Controller
 {
@@ -13,7 +15,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        return "Ini dari method index";
+
     }
 
     /**
@@ -23,7 +25,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        return view('data');
     }
 
     /**
@@ -34,7 +36,19 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Student::validate([
+            'nama' => 'required',
+            'telepon' => 'required | number',
+            'alamat' => 'required',
+        ]);
+
+        Student::create([
+            'nama' => $request->nama,
+            'telepon' => $request->telepon,
+            'alamat' => $request->alamat,
+        ])->save();
+
+        return redirect('/data');
     }
 
     /**
