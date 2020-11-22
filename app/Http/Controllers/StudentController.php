@@ -36,11 +36,11 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        Student::validate([
-            'nama' => 'required',
-            'telepon' => 'required | number',
-            'alamat' => 'required',
-        ]);
+        // Student::validate([
+        //     'nama' => 'required',
+        //     'telepon' => 'required | number',
+        //     'alamat' => 'required',
+        // ]);
 
         Student::create([
             'nama' => $request->nama,
