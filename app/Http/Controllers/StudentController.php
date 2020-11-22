@@ -25,7 +25,8 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('data');
+        $students = Student::orderBy('nama', 'asc')->get();
+        return view('data', compact('students'));
     }
 
     /**
@@ -48,7 +49,7 @@ class StudentController extends Controller
             'alamat' => $request->alamat,
         ])->save();
 
-        return redirect('/data');
+        return redirect()->back()->with('alert', 'Data ' . $request->nama . ' berhasil ditambahkan!');
     }
 
     /**

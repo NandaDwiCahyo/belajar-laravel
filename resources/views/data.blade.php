@@ -5,8 +5,15 @@
 
 @section('content')
 
+@if(session('alert'))
+<div class="alert alert-success">
+	{{ session('alert') }}
+</div>
+@endif
+
 <div class="row justify-content-center">
-	<div class="col shadow m-3 p-3">
+
+	<div class="col-10 shadow m-3 p-3">
 		<h3>Tambah Data</h3>
 		<form action="{{url('/data')}}" method="post">
 			@csrf
@@ -40,6 +47,31 @@
 			<button type="submit" class="btn btn-primary">Submit</button>
 		</form>
 	</div>
+
+	<div class="col-10 shadow m-3 p-3">
+		<h3>Daftar Data</h3>
+		<table class="table text-center">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Nama</th>
+					<th scope="col">No. Telp</th>
+					<th scope="col">Alamat</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach($students as $std)
+				<tr>
+					<th scope="row">{{$loop->iteration}}</th>
+					<td>{{$std->nama}}</td>
+					<td>{{$std->telepon}}</td>
+					<td>{{$std->alamat}}</td>
+				</tr>
+				@endforeach
+			</tbody>
+		</table>
+	</div>
+
 </div>
 
 @endsection
