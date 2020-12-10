@@ -26,7 +26,7 @@ class StudentController extends Controller
     public function create()
     {
         $students = Student::orderBy('nama', 'asc')->get();
-        return view('data', compact('students'));
+        return view('data.data', compact('students'));
     }
 
     /**
