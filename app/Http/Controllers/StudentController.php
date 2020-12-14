@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Student;
 
-
 class StudentController extends Controller
 {
     /**
@@ -25,8 +24,9 @@ class StudentController extends Controller
      */
     public function create()
     {
+        $updateMode = false;
         $students = Student::orderBy('nama', 'asc')->get();
-        return view('data.data', compact('students'));
+        return view('data.data', ['students' => $students, 'updateMode' => $updateMode]);
     }
 
     /**
@@ -71,7 +71,10 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $updateMode = true;
+        $students = Student::orderBy('nama', 'asc')->get();
+        $data = Student::where('id', $id)->get();
+        return view('data.data', compact('students', 'data', 'updateMode'));
     }
 
     /**
@@ -83,7 +86,21 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $students = Student::orderBy('nama', 'asc')->get();
+
+        $studentValidate = $request->validate([
+            'nama' => 'required|max:255',
+            'telepon' => 'required|max:255',
+            'alamat' => 'required|max:255',
+        ]);
+
+        $test = Student::where('id', $id)->update([
+            'nama' => $request->nama,
+            'telepon' => $request->telepon,
+            'alamat' => $request->alamat,
+        ]);
+
+        return redirect()->back()->with('alert', 'Data ' . $request->nama . ' berhasil diubah!');
     }
 
     /**

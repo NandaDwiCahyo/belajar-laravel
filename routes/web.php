@@ -25,3 +25,7 @@ Route::get('/about', function () {
 Route::get('/data', [StudentController::class, 'create']);
 
 Route::post('/data', [StudentController::class, 'store']);
+
+Route::get('/data/{id}/edit', [StudentController::class, 'edit']);
+
+Route::patch('/data/{id}', [StudentController::class, 'update']);
