@@ -40,7 +40,7 @@
 					<td>{{$std->alamat}}</td>
 					<td>
 						<a href="/data/{{$std->id}}/edit" class="btn btn-sm btn-warning">Perbarui</a>
-						<a href="#" class="btn btn-sm btn-danger">Hapus</a>
+						<a href="/data/{{$std->id}}" class="btn btn-sm btn-danger" onclick="return confirm('Ingin menghapus data?')">Hapus</a>
 					</td>
 				</tr>
 				@endforeach

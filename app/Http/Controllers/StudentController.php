@@ -49,7 +49,7 @@ class StudentController extends Controller
             'alamat' => $request->alamat,
         ])->save();
 
-        return redirect()->back()->with('alert', 'Data ' . $request->nama . ' berhasil ditambahkan!');
+        return redirect('/data')->with('alert', 'Data ' . $request->nama . ' berhasil ditambahkan!');
     }
 
     /**
@@ -94,13 +94,13 @@ class StudentController extends Controller
             'alamat' => 'required|max:255',
         ]);
 
-        $test = Student::where('id', $id)->update([
+        Student::where('id', $id)->update([
             'nama' => $request->nama,
             'telepon' => $request->telepon,
             'alamat' => $request->alamat,
         ]);
 
-        return redirect()->back()->with('alert', 'Data ' . $request->nama . ' berhasil diubah!');
+        return redirect('/data')->with('alert', 'Data ' . $request->nama . ' berhasil diubah!');
     }
 
     /**
@@ -111,6 +111,7 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Student::find($id)->delete();
+        return redirect('/data')->with('alert', 'Data berhasil dihapus!');
     }
 }
