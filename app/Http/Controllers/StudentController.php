@@ -38,9 +38,9 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         $studentValidate = $request->validate([
-            'nama' => 'required|max:255',
-            'telepon' => 'required|max:255',
-            'alamat' => 'required|max:255',
+            'nama' => 'required|min:2|max:100',
+            'telepon' => 'required|min:10|max:20',
+            'alamat' => 'required|min:5|max:100',
         ]);
 
         Student::create([
@@ -89,9 +89,9 @@ class StudentController extends Controller
         $students = Student::orderBy('nama', 'asc')->get();
 
         $studentValidate = $request->validate([
-            'nama' => 'required|max:255',
-            'telepon' => 'required|max:255',
-            'alamat' => 'required|max:255',
+            'nama' => 'required|min:2|max:100',
+            'telepon' => 'required|min:10|max:20',
+            'alamat' => 'required|min:5|max:100',
         ]);
 
         Student::where('id', $id)->update([
