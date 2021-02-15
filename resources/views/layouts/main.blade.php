@@ -25,7 +25,10 @@
 					<a class="nav-link" href="{{url('/data')}}">Data</a>
 				</li>
 				<li class="nav-item @yield('login-nav')">
-					<a class="nav-link" href="{{ route('login') }}">login</a>
+					<a class="nav-link" href="{{ route('login') }}">Login</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ route('logout') }}">Logout</a>
 				</li>
 			</ul>
 		</div>
