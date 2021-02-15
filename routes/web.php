@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,18 +17,18 @@ use App\Http\Controllers\StudentController;
 
 Route::get('/', function () {
 	return view('home');
-});
+})->name('home');
 
 Route::get('/about', function () {
 	return view('about');
-});
+})->name('about');
 
+// Data
 Route::get('/data', [StudentController::class, 'create']);
-
 Route::post('/data', [StudentController::class, 'store']);
-
 Route::get('/data/{id}/edit', [StudentController::class, 'edit']);
-
 Route::patch('/data/{id}', [StudentController::class, 'update']);
-
 Route::get('/data/{id}', [StudentController::class, 'destroy']);
+
+// Auth
+Route::get('/login', [AuthController::class, 'getLogin'])->name('login');
